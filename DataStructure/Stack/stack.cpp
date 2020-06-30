@@ -1,55 +1,77 @@
-#include<iostream>
-#include "stack.h"
+#include <iostream>
 
-Stack::Stack(){    
-    top = -1;
-    limit = 10;
-    arr = new int[limit];
-}
+template <typename T>
+class Stack
+{
+private:
+    int limit;
+    T *arr;
+    int top;
 
-Stack::Stack(int l){
-    top = -1;
-    limit = l;
-    arr = new int[limit];
-}
+public:
+    Stack()
+    {
+        top = -1;
+        limit = 10;
+        arr = new T[limit];
+    };
 
-bool Stack::isEmpty() const{
-    return (top == -1);
-}
+    Stack(int limit)
+    {
+        top = -1;
+        this->limit = limit;
+        arr = new T[limit];
+    };
+    
+    bool isEmpty() const
+    {
+        return (top == -1);
+    };
+    
+    bool isFull() const
+    {
+        return (top == limit - 1);
+    };
 
-bool Stack::isFull() const{
-    return (top == limit-1);
-}
+    void push(T elem)
+    {
+        if (!isFull())
+        {
+            arr[++top] = elem;
+        }
+        else
+        {
+            std::cout << "Array is full" << std::endl;
+        }
+    };
 
-void Stack::push(int elem){
-    if(!isFull()){
-        arr[++top] = elem;
-    }
-    else{
-        std::cout<<"Array is full"<<std::endl;
-    }
-}
+    T pop()
+    {
+        if (!isEmpty())
+        {
+            int elem = arr[top];
+            top = top - 1;
+            return elem;
+        }
+        else
+        {
+            std::cout << "Array is empty" << std::endl;
+            return -1;
+        }
+    };
 
-int Stack::pop(){
-    if(!isEmpty()){
-        int elem = arr[top];
-        top = top-1;
-        return elem;
-    }
-    else{
-        std::cout<<"Array is empty"<<std::endl;
-        return -1;
-    }
-}
-
-void Stack::printElements() const{
-    std::cout<<"Elements are :"<<std::endl;
-    for(int i=0; i<=top; i++){
-        std::cout<<arr[i]<<" ";
-    }
-    std::cout<<std::endl;
-}
-
-Stack::~Stack(){
-    delete[] arr;
-}
+    void printElements() const
+    {
+        std::cout << "Elements are :" << std::endl;
+        for (int i = 0; i <= top; i++)
+        {
+            std::cout << arr[i] << " ";
+        }
+        std::cout << std::endl;
+    };
+    
+    ~Stack()
+    {
+        delete[] arr;
+    };
+};
