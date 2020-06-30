@@ -8,6 +8,6 @@ int main()
     int *result = sort(arr, length);
 
     printArray(result, length);
-    
+
     return 0;
 }
