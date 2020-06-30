@@ -28,7 +28,12 @@ int partition(int* arr, int start, int end){
 
 void quickSort(int* arr, int start, int end){
     if(start < end){
+        int rangeIndex = rand()%(end-start+2);
+        int randomIndex = start + rangeIndex;
+        exchange(arr, randomIndex, end);
+        
         int mid = partition(arr, start, end);
+
         quickSort(arr, start, mid-1);
         quickSort(arr, mid+1, end);
     }
