@@ -9,7 +9,5 @@ int main(){
     ll.insert("Rabbit");
     ll.insert("leopard");
     ll.insert("Tiger");    
-    std::cout<<ll.search("Rabbit");
-    std::cout<<std::endl;
     ll.printElements();
 }

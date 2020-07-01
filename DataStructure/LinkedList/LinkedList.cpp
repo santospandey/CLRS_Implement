@@ -1,4 +1,5 @@
 #include<iostream>
+#include<list>
 
 template<typename T>
 struct Node
@@ -12,19 +13,40 @@ class LinkedList
 {
 private:
     Node<T>* head;
+    Node<T>* tail;
 public:
     LinkedList(){
         head = nullptr;
+        tail = nullptr;
     }
     
-    void insert(T data){
+    void insertStart(T data){
         Node<T>* node = new Node<T>();
         node->data = data;
         node->next = head;
         head = node;
     }
+
+    void insertEnd(T data){
+        Node<T>* node = new Node<T>();
+        node->data = data;
+        node->next = nullptr;
+
+        if(head == nullptr){
+            head = node;
+            tail = node;
+        }
+        else{
+            tail->next = node;
+            tail = node;
+        }
+    }
+
+    void insert(T data){
+        insertEnd(data);
+    }
     
-    bool remove(T data){
+    bool remove(T data){        
         Node<T>* temp = head;
         Node<T>* prev = head;
         while((temp != nullptr) && (temp->data != data)){
@@ -54,17 +76,12 @@ public:
         }
     }
 
-    bool search(T data){
-        Node<T>* temp = head;
-        bool found = false;
-        while(temp != nullptr){
-            if(temp->data == data){
-                found = true;
-                break;
-            }   
+    Node<T>& search(T data){
+        Node<T>* temp = head;        
+        while(temp != nullptr && temp->data != data){            
             temp = temp->next;
         }
-        return found;
+        return *temp;
     }
 
     void printElements(){
