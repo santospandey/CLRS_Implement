@@ -1,51 +1,61 @@
 #include<iostream>
 
+template<typename T>
 struct Node
 {
-    int data;
+    T data;
     Node* next;
 };
 
+template<typename T>
 class LinkedList
 {
 private:
-    Node* head;
+    Node<T>* head;
 public:
     LinkedList(){
         head = nullptr;
     }
-    void insert(int data){
-        Node* node = new Node();
+    
+    void insert(T data){
+        Node<T>* node = new Node<T>();
         node->data = data;
         node->next = head;
         head = node;
     }
     
-    bool remove(int data){
-        Node* temp = head;
-        Node* prev = nullptr;
+    bool remove(T data){
+        Node<T>* temp = head;
+        Node<T>* prev = head;
         while((temp != nullptr) && (temp->data != data)){
             prev = temp;
             temp = temp->next;
         }
+
         if(temp == nullptr){
             return false;
         }
-        else{
-            if(prev == nullptr){
+        else if(prev == head){
+            if(prev->next == nullptr){
+                head = nullptr;
                 delete temp;
                 return true;
             }
             else{
-                prev->next = temp->next;
+                head = head->next;
                 delete temp;
                 return true;
             }
         }
+        else{
+            prev->next = temp->next;
+            delete temp;
+            return true;
+        }
     }
 
-    bool search(int data){
-        Node* temp = head;
+    bool search(T data){
+        Node<T>* temp = head;
         bool found = false;
         while(temp != nullptr){
             if(temp->data == data){
@@ -58,7 +68,7 @@ public:
     }
 
     void printElements(){
-        Node* temp = head;
+        Node<T>* temp = head;
         while(temp != nullptr){
             std::cout<<temp->data<<" ";
             temp = temp->next;
@@ -67,9 +77,9 @@ public:
     }
 
     ~LinkedList(){
-        Node* temp = head;
+        Node<T>* temp = head;
         while(temp != nullptr){
-            Node* toRemove = temp;
+            Node<T>* toRemove = temp;
             temp = temp->next;
             delete toRemove;
         }
