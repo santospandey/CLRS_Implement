@@ -1,3 +1,4 @@
+# Algorithm
 What is algorithm? Is the study of algorithm worthwhile? Role of algorithm in technology.
 
 Algorithm is the step wise procedure that transform given input to output. Computer Programs
