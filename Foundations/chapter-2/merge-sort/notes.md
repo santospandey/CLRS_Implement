@@ -1,10 +1,10 @@
 Suppose we have an array = [43, 23, 23, 12, 10, 4, -2, 12]
 and we want to sort the array by using merge sort. 
-It is based on the theme of divide and conquer. 
+It is based on the paradigm of divide and conquer. 
 At first we divide the array into successive halves until when we couldnot further 
 divide. That is when an array is divided into each one element array. 
 We Then merge each two array from buttom to up fasion in such a way that merged 
-array is sorted. To be more clearly we have to merged two sorted array so that the 
+array is always sorted. To be more clearly we have to merged two sorted array so that the 
 resulted array is itself sorted. 
 
 If we look at the example above
