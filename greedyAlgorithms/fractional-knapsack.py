@@ -45,7 +45,9 @@ class SortItem:
 items = [
     Item(1, 60, 10),
     Item(2, 100, 20),
-    Item(3, 120, 30)
+    Item(3, 120, 30),
+    Item(4, 70, 7),
+    Item(5, 30, 6)
 ]
 
 capacity = 50
