@@ -1,3 +1,6 @@
+# Reference:- Ghassan Shobaki Computer Science Lectures video
+# Algorithms Lecture 14: Greedy Algorithms, Knapsack Problem
+
 class Item:
     def __init__(self, id, value, weight):
         super().__init__()
@@ -37,7 +40,7 @@ class SortItem:
                 break
 
         return sack_list    
-        
+
 
 items = [
     Item(1, 60, 10),
