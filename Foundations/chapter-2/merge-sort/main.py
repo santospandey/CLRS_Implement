@@ -3,10 +3,12 @@ from math import floor
 class MergeSort:    
     POSITIVE_INFINITY = 9999999999
 
-    def __init__(self, data):
-        super().__init__()
+    def __init__(self, data, ch):
+        super().__init__()        
         if self.isList(data):
             self.data = data
+        if ch:
+            MergeSort.POSITIVE_INFINITY = '}'
 
 
     def isList(self, data):
@@ -21,8 +23,10 @@ class MergeSort:
     def sort(self):
         start = 0
         end = len(self.data) - 1
-        self.merge(start, end)
-    
+        if start <= end:
+            self.merge(start, end)
+        else:
+            print("enter array of least size 1")
 
     def merge(self, start, end):
         if(start == end):
@@ -63,7 +67,7 @@ class MergeSort:
         print()
 
 
-arr = [18, 4, 36, 12, 1, 9, 23]
-merge_sort = MergeSort(arr)
+arr = ['h','e','l','l','o']
+merge_sort = MergeSort(arr, ch=True)
 merge_sort.sort()
 merge_sort.print()
